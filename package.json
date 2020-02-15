@@ -20,23 +20,32 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "mobx": "^5.15.3",
+    "mobx-react": "^6.1.4"
   },
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "http-proxy-middleware": "^0.20.0",
+    "netlify-lambda": "^1.6.3",
+    "npm-run-all": "^4.1.5"
   },
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "start:app": "npm run develop",
+    "start:lambda": "netlify-lambda serve src/lambda",
+    "start": "run-p start:**",
+    "build:app": "npm run clean && gatsby build",
+    "build:lambda": "netlify-lambda build src/lambda",
+    "build": "run-p build:**",
+    "develop": "npm run clean && gatsby develop",
+    "serve": "gatsby serve",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
