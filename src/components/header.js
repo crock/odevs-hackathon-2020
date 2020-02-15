@@ -1,34 +1,41 @@
+import React from "react"
+import styled from "styled-components"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+
+const Wrap = styled.div`
+  display: block;
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 1200px) {
+    width: 90%;
+  }
+`
+
+const StyledHeader = styled.header`
+  width: 100%;
+  height: 70px;
+  background-color: #7B7B7B;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`
+
+const PageTitle = styled.h1`
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 0;
+`
 
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+  <StyledHeader>
+    <Wrap>
+      <PageTitle>{siteTitle}</PageTitle>
+    </Wrap>
+  </StyledHeader>
 )
 
 Header.propTypes = {
