@@ -2,7 +2,27 @@ import React from "react";
 import styled, { css } from 'styled-components'
 import axios from "axios";
 
+import wattsImg from '../images/watts.png'
+import deviceImg from '../images/device.png'
+import dailyUseImg from '../images/daily_use.png'
+import quantityImg from '../images/quantity.png'
+
 // STYLED COMPONENTS
+const InputGroup = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 25px;
+
+  img {
+    margin-right: 15px;
+    margin-bottom: 0;
+    width: 34px;
+    height: 34px;
+  }
+`
+
 const Input = styled.input`
   display: inline-block;
   border-radius: 3px;
@@ -22,13 +42,28 @@ const Input = styled.input`
   `}
 `
 
-const Button = styled.button`
+const NextButton = styled.button`
     display: inline-block;
     border-radius: 3px;
     margin: 10px 5px 10px 5px;
     width: 11rem;
     height: 60px;
-    background: blue;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+
+    ${props => props.disabled && css`
+        opacity: 0.5;
+  `}
+`
+
+const SubmitButton = styled.button`
+    display: inline-block;
+    border-radius: 3px;
+    margin: 10px 5px 10px 5px;
+    width: 11rem;
+    height: 60px;
+    background: #85d466;
     color: white;
     border: 2px solid white;
 
@@ -118,47 +153,59 @@ export default class Form extends React.Component {
         return (
             <div>
                 <form>
-                    <Input
-                        name = "label"
-                        value = {this.state.label}
-                        type = "text"
-                        placeholder = "label"
-                        onChange = {this.onChange}
-                    />
-                    <Input
-                        name = "quantity"
-                        value = {this.state.quantity}
-                        type = "text"
-                        placeholder = "quantity"
-                        onChange = {this.numberVerify}
-                    />
-                    <Input
-                        name = "hours"
-                        value = {this.state.hours}
-                        type = "text"
-                        placeholder = "hours"
-                        onChange = {this.numberVerify}
-                    />
-                    <Input
-                        name = "watts"
-                        value = {this.state.watts}
-                        type = "text"
-                        placeholder = "watts"
-                        onChange = {this.numberVerify}
-                    />
+                    <InputGroup>
+                        <img src={deviceImg} alt="device" />
+                        <Input
+                            name = "label"
+                            value = {this.state.label}
+                            type = "text"
+                            placeholder = "label"
+                            onChange = {this.onChange}
+                        />
+                    </InputGroup>
+                    <InputGroup>
+                        <img src={quantityImg} alt="quantity" />
+                        <Input
+                            name = "quantity"
+                            value = {this.state.quantity}
+                            type = "text"
+                            placeholder = "quantity"
+                            onChange = {this.numberVerify}
+                        />
+                    </InputGroup>
+                    <InputGroup>
+                        <img src={dailyUseImg} alt="hours" />
+                        <Input
+                            name = "hours"
+                            value = {this.state.hours}
+                            type = "text"
+                            placeholder = "hours"
+                            onChange = {this.numberVerify}
+                        />
+                    </InputGroup>
+                    <InputGroup>
+                        <img src={wattsImg} alt="watts" />
+                        <Input
+                            name = "watts"
+                            value = {this.state.watts}
+                            type = "text"
+                            placeholder = "watts"
+                            onChange = {this.numberVerify}
+                        />
+                    </InputGroup>
                     {/* <Button
                         onClick = {this.next}
                         disabled = {(this.state.i < 1)}
                     >BACK</Button> */}
-                    <Button
+                    <NextButton
                         onClick = {this.next}
                         disabled = {!(this.state.label && this.state.quantity && this.state.hours && this.state.watts)}
-                    >NEXT</Button>
-                    <Button
+                    >NEXT</NextButton>
+                    <SubmitButton
                         type = "submit"
                         onClick = {this.submit}
                         disabled = {!(this.state.label && this.state.quantity && this.state.hours && this.state.watts)}
-                    >SUBMIT</Button>
+                    >SUBMIT</SubmitButton>
                 </form>
             </div>
         )
