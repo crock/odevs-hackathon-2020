@@ -11,7 +11,7 @@
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 301
-  
+
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
   for = "/*"

@@ -1,6 +1,9 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Form from "../components/form"
+import Results from "../components/results"
+import Summary from "../components/summary"
 import styled from 'styled-components'
 
 import wattsImg from '../images/watts.png'
@@ -33,6 +36,9 @@ const InputGroup = styled.div`
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
+    <Form />
+    <Results />
+    <Summary />
     <InputGroup>
       <img src={wattsImg} alt="watts" />
       <Input />

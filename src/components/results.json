@@ -1,0 +1,22 @@
+{
+    "results":[
+        {
+            "label":"xyz",
+            "emission":"123",
+            "electricity":"123",
+            "cost":"123"
+        },
+        {
+            "label":"xyz",
+            "emission":"123",
+            "electricity":"123",
+            "cost":"123"
+        },
+        {
+            "label":"xyz",
+            "emission":"123",
+            "electricity":"123",
+            "cost":"123"
+        }
+    ]
+}
