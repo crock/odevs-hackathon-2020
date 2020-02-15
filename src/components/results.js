@@ -16,7 +16,19 @@ export default class Results extends React.Component {
     }
 
     fillResults = () => {
-
+        console.log(result.default.results)
+        const results = result.default.results
+        return results.map((x) => {
+            const { label , emission , electricity , cost } = x;
+            return (
+                <tr>
+                    <td>{label}</td>
+                    <td>{emission}</td>
+                    <td>{electricity}</td>
+                    <td>${cost}</td>
+                </tr>
+            )
+        })
     }
 
     render() {
@@ -26,11 +38,14 @@ export default class Results extends React.Component {
                     <thead>
                         <tr>
                             <th>Label</th>
-                            <th>Label</th>
-                            <th>Label</th>
-                            <th>Label</th>
+                            <th>Emission</th>
+                            <th>Electricity Used</th>
+                            <th>Cost</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        {this.fillResults()}
+                    </tbody>
                 </table>
             </div>
         )

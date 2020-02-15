@@ -1,22 +1,22 @@
 {
     "results":[
         {
-            "Label":"xyz",
-            "Emmission":"123",
-            "Electricity":"123",
-            "Cost":"123"
+            "label":"xyz",
+            "emission":"123",
+            "electricity":"123",
+            "cost":"123"
         },
         {
-            "Label":"xyz",
-            "Emmission":"123",
-            "Electricity":"123",
-            "Cost":"123"
+            "label":"xyz",
+            "emission":"123",
+            "electricity":"123",
+            "cost":"123"
         },
         {
-            "Label":"xyz",
-            "Emmission":"123",
-            "Electricity":"123",
-            "Cost":"123"
+            "label":"xyz",
+            "emission":"123",
+            "electricity":"123",
+            "cost":"123"
         }
     ]
 }

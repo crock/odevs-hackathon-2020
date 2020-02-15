@@ -22,7 +22,7 @@ const Input = styled.input`
   `}
 `
 
-const Submit = styled.button`
+const Button = styled.button`
     display: inline-block;
     border-radius: 3px;
     margin: 10px 5px 10px 5px;
@@ -41,13 +41,18 @@ export default class Form extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            items: [],
+            item: {},
             label: "",
             quantity: "",
             hours: "",
             watts: "",
+            i: 0
         };
         this.onChange = this.onChange.bind(this);
+        this.next = this.next.bind(this);
         this.submit = this.submit.bind(this);
+        this.numberVerify = this.numberVerify.bind(this);
     }
 
     // FUNCTIONS
@@ -56,12 +61,52 @@ export default class Form extends React.Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
-    submit = async e => {
+    numberVerify = e => {
+        const re = /^[0-9\b]+$/;
+        if (e.target.value === '' || re.test(e.target.value)) {
+            this.onChange(e);
+        };
+    };
+
+    next(e) {
         e.preventDefault();
-        console.log(this.state.label)
+        this.state.item = {
+            "id": this.state.i,
+            "label": this.state.label,
+            "quantity": this.state.quantity,
+            "hours": this.state.hours,
+            "watts": this.state.watts
+        }
+        this.state.items.push(this.state.item)
+        this.state.i++;
+        this.setState({
+            label: "",
+            quantity: "",
+            hours: "",
+            watts: ""
+        })
+        // console.log(this.state.items)
+    }
+
+    // back(e) {
+    //     e.preventDefault();
+    //     this.setState({
+    //         "label": this.state.item.label,
+    //         "quantity": this.state.item.quantity,
+    //         "hours": this.state.item.hours,
+    //         "watts": this.state.item.watts
+    //     })
+    // }
+
+    submit = async e => {
+        this.next(e);
+        e.preventDefault();
+        let send = {"results" : this.state.items}
+        // console.log(send)
         const response = await axios({
-            method: 'get',
-            url: 'http://localhost:9000/get-cloverly-data?watts=70&hours=24'
+            method: 'post',
+            url: 'https://hopeful-blackwell-eefe4f.netlify.com/.netlify/functions/get-cloverly-details',
+            data: send
         })
 
         console.log(response.data)
@@ -85,27 +130,35 @@ export default class Form extends React.Component {
                         value = {this.state.quantity}
                         type = "text"
                         placeholder = "quantity"
-                        onChange = {this.onChange}
+                        onChange = {this.numberVerify}
                     />
                     <Input
                         name = "hours"
                         value = {this.state.hours}
                         type = "text"
                         placeholder = "hours"
-                        onChange = {this.onChange}
+                        onChange = {this.numberVerify}
                     />
                     <Input
                         name = "watts"
                         value = {this.state.watts}
                         type = "text"
                         placeholder = "watts"
-                        onChange = {this.onChange}
+                        onChange = {this.numberVerify}
                     />
-                    <Submit
+                    {/* <Button
+                        onClick = {this.next}
+                        disabled = {(this.state.i < 1)}
+                    >BACK</Button> */}
+                    <Button
+                        onClick = {this.next}
+                        disabled = {!(this.state.label && this.state.quantity && this.state.hours && this.state.watts)}
+                    >NEXT</Button>
+                    <Button
                         type = "submit"
                         onClick = {this.submit}
                         disabled = {!(this.state.label && this.state.quantity && this.state.hours && this.state.watts)}
-                    >SUBMIT</Submit>
+                    >SUBMIT</Button>
                 </form>
             </div>
         )
