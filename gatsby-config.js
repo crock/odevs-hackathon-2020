@@ -3,7 +3,7 @@ const proxy = require('http-proxy-middleware')
 
 module.exports = {
   siteMetadata: {
-    title: `ODevs Hackathon 2020`,
+    title: `🧮 Carbon Calculator`,
     description: `Project Unknown`,
     author: ``,
   },

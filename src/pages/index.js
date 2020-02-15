@@ -1,20 +1,50 @@
 import React from "react"
-import { Link } from "gatsby"
-
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import styled from 'styled-components'
+
+import wattsImg from '../images/watts.png'
+import deviceImg from '../images/device.png'
+import dailyUseImg from '../images/daily_use.png'
+
+const Input = styled.input`
+  width: 100%;
+  height: 50px;
+  background-color: white;
+
+  &:focus {
+    outline: none;
+  }
+`
+
+const InputGroup = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 25px;
+
+  img {
+    margin-right: 15px;
+    margin-bottom: 0;
+  }
+`
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <InputGroup>
+      <img src={wattsImg} alt="watts" />
+      <Input />
+    </InputGroup>
+    <InputGroup>
+      <img src={deviceImg} alt="watts" />
+      <Input />
+    </InputGroup>
+    <InputGroup>
+      <img src={dailyUseImg} alt="watts" />
+      <Input />
+    </InputGroup>
   </Layout>
 )
 
