@@ -12,7 +12,7 @@ exports.handler = async (event, context, callback) => {
         url: 'https://api.cloverly.com/2019-03-beta/purchases/electricity',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${process.env.GATSBY_CLOVERLY_KEY}`
+            'Authorization': `Bearer public_key:47800ea0ee541b4c`
         },
         data: {
             energy: {
@@ -24,6 +24,11 @@ exports.handler = async (event, context, callback) => {
 
     return {
         statusCode: 200,
-        body: JSON.stringify(response.data)
+        body: JSON.stringify(response.data),
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": 'GET, PUT, POST, DELETE, HEAD, OPTIONS, PATCH'
+
+        }
     };
 };
