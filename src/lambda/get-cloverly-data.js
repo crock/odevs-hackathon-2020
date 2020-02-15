@@ -12,7 +12,7 @@ exports.handler = async (event, context, callback) => {
         url: 'https://api.cloverly.com/2019-03-beta/purchases/electricity',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer public_key:47800ea0ee541b4c`
+            'Authorization': `Bearer ${process.env.GATSBY_CLOVERLY_KEY}`
         },
         data: {
             energy: {
