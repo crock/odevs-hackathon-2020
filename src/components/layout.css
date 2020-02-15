@@ -5,8 +5,18 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
+
+tr,td {
+  color: white;
+} 
+
+ul > li {
+  color: white;
+}
+
 body {
-  background-color: #595959;
+  background-color: #353535;
+  color: white;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

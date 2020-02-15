@@ -17,7 +17,7 @@ const Wrap = styled.div`
 const StyledHeader = styled.header`
   width: 100%;
   height: 70px;
-  background-color: #7B7B7B;
+  background-color: #edad2d;
   display: flex;
   justify-content: flex-start;
   align-items: center;
