@@ -26,9 +26,9 @@ exports.handler = async (event, context, callback) => {
         statusCode: 200,
         body: JSON.stringify(response.data),
         headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": 'GET, PUT, POST, DELETE, HEAD, OPTIONS, PATCH'
-
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': '*'
         }
     };
 };
